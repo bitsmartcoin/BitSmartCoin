@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=BitSmart
+Comment=BitSmart P2P Cryptocurrency
+Comment[ru]=BitSmart, P2P криптовалюта
+Comment[fr]=BitSmart, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=BitSmart, eşten eşe kriptografik sanal para birimi
+Exec=/usr/bin/BitSmart-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/BitSmart80.xpm
+MimeType=x-scheme-handler/BitSmart;
+Categories=Office;

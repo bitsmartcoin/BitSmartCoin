@@ -1,0 +1,2 @@
+debian/bin/BitSmartd usr/bin
+src/BitSmartd usr/lib/BitSmart

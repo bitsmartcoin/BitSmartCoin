@@ -1,0 +1,25 @@
+#!/usr/bin/make -f
+# -*- mode: makefile; coding: utf-8 -*-
+
+DEB_INSTALL_EXAMPLES_BitSmartd += debian/examples/*
+DEB_INSTALL_MANPAGES_BitSmartd += debian/manpages/*
+
+%:
+	dh --with bash-completion $@
+
+override_dh_auto_build:
+	cd src; $(MAKE) -f makefile.unix BitSmartd USE_ASM=1 USE_LEVELDB=1
+	$(MAKE)
+
+override_dh_auto_clean:
+	if [ -f Makefile ]; then $(MAKE) clean; else rm -rf build/; rm -f BitSmart-qt; fi
+	cd src; $(MAKE) -f makefile.unix clean
+
+override_dh_auto_configure:
+	qmake BitSmart-qt.pro USE_ASM=1 USE_LEVELDB=1
+
+# Ensure wrapper is set executable
+binary-post-install/BitSmartd:
+	chmod +x $(cdbs_curdestdir)usr/bin/BitSmartd
+binary-post-install/BitSmart-qt:
+	chmod +x $(cdbs_curdestdir)usr/bin/BitSmart-qt
